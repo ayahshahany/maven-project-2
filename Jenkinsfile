@@ -4,7 +4,7 @@ pipeline {
     WORKSPACE = "${env.WORKSPACE}"
   }
   tools {
-    maven 'localMaven'
+    maven 'maven3.8'
     jdk 'localJdk'
   }
   stages {
@@ -19,11 +19,11 @@ pipeline {
         }
       }
     }
-    stage('SonarQube Scan') {
+    stage('sonarqube4.6 Scan') {
       steps {
         sh """mvn sonar:sonar \
-                 -Dsonar.host.url=http://54.186.239.252:9000 \
-                 -Dsonar.login=d82255b9388b42dfba067239f20b3a33428ece9c"""
+                -Dsonar.host.url=http://34.217.136.222:9000 \
+                -Dsonar.login=810a65c893e28b7627faa282fdb9a4cbf16d7fb6c"""
       }
     }
     stage('Upload to Artifactory') {
