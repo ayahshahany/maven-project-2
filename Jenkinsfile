@@ -4,7 +4,7 @@ pipeline {
     WORKSPACE = "${env.WORKSPACE}"
   }
   tools {
-    maven 'maven3.8'
+    maven 'localMaven'
     jdk 'localJdk'
   }
   stages {
@@ -19,7 +19,7 @@ pipeline {
         }
       }
     }
-    stage('sonarqube4.6 Scan') {
+    stage('SonarQube Scan') {
       steps {
         sh """mvn sonar:sonar \
                 -Dsonar.host.url=http://34.222.225.56:9000 \
